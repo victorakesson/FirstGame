@@ -1,25 +1,25 @@
 love.physics.setMeter(64) 
 
-local world = love.physics.newWorld(0, 9.82*64, true) -- Detta ger världen tygndkraft 
--- Vi måste ha 64 på setMeter för att kunna få tyngdkraften 9.82 att funka då 64 är metern
+local world = love.physics.newWorld(0, 9.82*64, true) -- This give the world gravity 
+-- We need to set setMeter to 64 so we can make the world accept 64 bits as a meter which we then put in the Local world code
 
-local seconds = 0 -- Här anger vi att sekund är 0 vilket vi kommer använda till våran timer
+local seconds = 0 -- Here we put seconds to 0 so we use 0 as the start time
 
-local charachter = {} -- Här anger vi gubben som vi styr samt dess utseende
+local charachter = {} --This is the charachter
 
 charachter.body = love.physics.newBody(world, 50, 400, 'dynamic')
 charachter.body.setMass(charachter.body, 25)
 charachter.shape = love.physics.newRectangleShape(0, 0, 50, 50)
 charachter.fixture = love.physics.newFixture(charachter.body, charachter.shape)
 
-local bar = {} -- Detta är plattformarna som gubben ska stå på. Dem dessa nästan identiska 
+local bar = {} -- These are the plattforms they are almost identical except for shape and size
 -- förutom platsen dem är på 
-bar.body = love.physics.newBody(world, 0, 450, 'static') -- Detta är plattformens plats på banan
-bar.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0) -- Detta är plattformens mått 
+bar.body = love.physics.newBody(world, 0, 450, 'static') -- The plattform
+bar.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0) -- The plattforms measurements
 bar.fixture = love.physics.newFixture(bar.body, bar.shape) 
 
 local barsecond = {}
-barsecond.body = love.physics.newBody(world, 600, 450, 'static') -- 600 är vart plattformen sitter sidleds
+barsecond.body = love.physics.newBody(world, 600, 450, 'static') -- 600 is where the plattform is placed horizontaly
 barsecond.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
 barsecond.fixture = love.physics.newFixture(barsecond.body, barsecond.shape)
 
@@ -28,10 +28,10 @@ barthird.body = love.physics.newBody(world, 300, 450, 'static')
 barthird.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
 barthird.fixture = love.physics.newFixture(barthird.body, barthird.shape)
 
-love.graphics.setBackgroundColor(0.2, 180, 0) -- Ändrar bakgrundsfärgen till grön
-  love.window.setMode(800, 800 ) -- Detta anger hur stort fönstret som Love öppnar är i mitt fall har jag 800 800 då min sista plattform börjar vid 600
+love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
+  love.window.setMode(800, 800 ) --This is how big the widow that love opens is in my case its 800x800 because my last plattform starts at 600
 
-love.draw = function() -- Här ritar vi ut allting på banan
+love.draw = function() -- Draws the whole code
 
   love.graphics.setColor(0.3, 0.3, 0)
   love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
@@ -39,21 +39,21 @@ love.draw = function() -- Här ritar vi ut allting på banan
   love.graphics.polygon('fill', barthird.body:getWorldPoints(bar.shape:getPoints()))
   love.graphics.setColor(0.7, 0, 0,2)
   love.graphics.polygon('fill', charachter.body:getWorldPoints(charachter.shape:getPoints()))
-  local clock_display = 'Time: ' .. seconds -- Detta gör så att vår timer visar sekunderna
-  love.graphics.print(clock_display, 0, 0, 0, 1.1, 1.1) -- Detta är vår klockas plats och färg
+  local clock_display = 'Time: ' .. seconds --Makes the timer show seconds
+  love.graphics.print(clock_display, 0, 0, 0, 1.1, 1.1) -- The clocks place and color
 
 end
 
-love.update = function(dt) -- Här börjar koden för tangentbordet och hur tiden räknas
-  world:update(dt) -- Detta updaterar världens tid (dt)
+love.update = function(dt) -- This is the function for time and controls
+  world:update(dt) -- Updates the world time(dt)
 
-  seconds = seconds + dt -- Detta gör så att seconds vilket vi angav 0 innan ökar med dt (tiden som har gått) 
+  seconds = seconds + dt -- This makes seconds which we gave the base number 0 to increase with dt (The time the world has been up) 
 
-if love.keyboard.isDown("d") then -- Om vi klickar på D går den åt höger 
-  charachter.body:applyForce(500,0) -- 500 anger hur snabbt gubben rör sig 
-elseif love.keyboard.isDown("a") then -- klickar vi a så går den åt vänster
+if love.keyboard.isDown("d") then -- Press d to move to the right
+  charachter.body:applyForce(500,0) -- 500 is the number at which force the charachter moves
+elseif love.keyboard.isDown("a") then -- press a to move to the left
   charachter.body:applyForce(-500,0)
-elseif love.keyboard.isDown("space") then -- mitt försök till att hoppa ska försöka lösa det 
+elseif love.keyboard.isDown("space") then -- My try to make the charachter jump (work in progress)
   charachter.body:applyForce(0, 200)
 end
 end
