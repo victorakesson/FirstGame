@@ -34,7 +34,7 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Ändrar bakgrundsfärgen till g
 love.draw = function() -- Här ritar vi ut allting på banan
 
   love.graphics.setColor(0.3, 0.3, 0)
-    love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
+  love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
   love.graphics.polygon('fill', bar.body:getWorldPoints(bar.shape:getPoints()))
   love.graphics.polygon('fill', barthird.body:getWorldPoints(bar.shape:getPoints()))
   love.graphics.setColor(0.7, 0, 0,2)

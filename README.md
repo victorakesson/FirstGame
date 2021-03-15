@@ -1,23 +1,23 @@
 # 2D Platformer 
-I detta spel är det menat att du ska ta dig till ett mål på banan under en viss tid. 
+In this game you are meant to jump on the plattforms and reach the flag at the top 
 
-# Vad jag behöver göra: 
+# What needs to be done: 
 
-En flagga som mål (eller ett annat objekt).
-Fixa så gubben kan hoppa. 
-Ett bra sätt att starta om bannan. 
-fiender. 
+A flag (Or something alse as an objective)
+Make the charachter jump.
+A good way to start, restart and quit the map.
+Enemies.
 
-# Om jag har tid: 
-Göra så att banan är längre och att skrämen kan röra sig sidleds.
-Bättre grafik.
-Musik.
+# Extra things: 
+Make the map longer and make the background follow the player
+Better graphics 
+Music
 
-# Vad jag har gjort: 
+# What i have done: 
 
-Grunden till gubben 
-Göra så att gubben kan röra sig. 
-Världens fysiska egenskaper.
-En timer.
-Plattformarna. 
-simpel bakgrund. 
+Early iteration of the charachter 
+Make the characther move
+Physics
+A timer
+Plattforms
+A simple background
