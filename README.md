@@ -3,9 +3,6 @@ In this game you are meant to jump on the plattforms and reach the flag at the t
 
 # What needs to be done: 
 
-A flag (Or something alse as an objective)
-Make the charachter jump.
-A good way to start, restart and quit the map.
 Enemies.
 
 # Extra things: 
@@ -21,3 +18,7 @@ Physics
 A timer
 Plattforms
 A simple background
+Made a menu system 
+A flag 
+A way to die 
+Reset button, Pause button and exit button 
