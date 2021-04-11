@@ -67,15 +67,15 @@ love.update = function(dt) -- This is the function for time and controls.
     print(charachter.body:getX())
     if love.keyboard.isDown("space") and
         (charachter.body:getY() > 730 and charachter.body:getY() < 750) then
-        charachter.body:applyForce(0, -5500)
+        charachter.body:applyForce(0, -4500)
     elseif love.keyboard.isDown("space") and
         (charachter.body:getY() > 520 and charachter.body:getY() < 530) and
         (charachter.body:getX() > 310 and charachter.body:getX() < 475) then
-        charachter.body:applyForce(0, -25000)
+        charachter.body:applyForce(0, -15000)
     elseif love.keyboard.isDown("space") and
         (charachter.body:getY() > 315 and charachter.body:getY() < 330) and
         (charachter.body:getX() > 590 and charachter.body:getX() < 800) then
-        charachter.body:applyForce(0, -25000)
+        charachter.body:applyForce(0, -8000)
     end
     if (charachter.body:getY() > 120 and charachter.body:getY() < 130 and
         (charachter.body:getX() > 685 and charachter.body:getX() < 700)) then

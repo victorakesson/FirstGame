@@ -18,6 +18,7 @@ love.draw = function() -- Draws the whole code.
         love.graphics.print({fontcolor, ("Welcome To")}, smallFont, 250, 150)
         love.graphics.print({fontcolor, ("CLIMB RACE")}, bigFont, 110, 200)
         love.graphics.print({fontcolor, ("Press ENTER To Start The Game")},smallFont, 170, 400)
+        love.graphics.print({fontcolor, ("And T for a tutorial")},smallFont, 200, 450)
         return
 
     end
