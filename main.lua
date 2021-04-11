@@ -84,7 +84,15 @@ love.update = function(dt) -- This is the function for time and controls.
   world:update(dt) -- Updates the world time(dt).
 
   seconds = seconds + dt -- This makes seconds which we gave the base number 0 to increase with dt (The time the world has been up).
-if Menu == true then return 
+
+  local charachterY = charachter.body:getY()
+
+  if(charachterY > love.graphics.getHeight()) then 
+    gameOver = true 
+    return 
+  end 
+
+  if Menu == true then return 
 end
 if love.keyboard.isDown("d") then -- Press d to move to the right.
   charachter.body:applyForce(500,0) -- 500 is the number at which force the charachter moves.
