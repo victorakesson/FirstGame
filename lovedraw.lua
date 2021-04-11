@@ -12,7 +12,6 @@ love.draw = function() -- Draws the whole code.
         return
     elseif pauseGame == true then
         love.graphics.print({fontcolor, ("ClIMB RACE")}, bigFont, 110, 150)
-        love.graphics.print({fontcolor, ("Paused")}, smallFont, 210, 300)
         love.graphics.print({fontcolor, ("Press P To Continue")}, smallFont, 210, 350)
         return
     elseif Menu == true and tutorial == false then
@@ -25,14 +24,10 @@ love.draw = function() -- Draws the whole code.
     if tutorial == true and pauseGame == false then
         love.graphics.print({fontcolor, ("CLIMB RACE")}, bigFont, 110, 130)
         love.graphics.print({fontcolor, ("T To Continue")}, smallFont, 145, 300)
-        love.graphics.rectangle('line', 139, 305, 30, 30)
         love.graphics.print({fontcolor, ("Esc To Exit")}, smallFont, 345, 300)
-        love.graphics.rectangle('line', 339, 305, 54, 30)
         love.graphics.print({fontcolor, ("R To Restart")}, smallFont, 145, 360)
-        love.graphics.rectangle('line', 139, 365, 30, 30)
         love.graphics.print({fontcolor, ("P To Pause")}, smallFont, 345, 360)
-        love.graphics.rectangle('line', 339, 365, 30, 30)
-        love.graphics.print({fontcolor, ("Arrows To Move Sideways")}, smallFont,170, 479)
+        love.graphics.print({fontcolor, ("Use a and d to move sideway and space to jump ")}, smallFont,100, 479)
         return
     end
     love.graphics.draw(flag, 675, 100, 0, 0.2)
