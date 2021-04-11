@@ -45,13 +45,12 @@ barfive.body = love.physics.newBody(world, 600, 150, 'static')
 barfive.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
 barfive.fixture = love.physics.newFixture(barfive.body, barfive.shape)
 
-local flag = {}
+local flag 
+function love.load()
+flag = love.graphics.newImage("flag.png")
+end
 
-flag.texture = love.graphics.newImage("flag.png")
-flag.position = {
-  ["X"] = 650,
-  ["y"] = 150
-}
+
 
 
 
@@ -59,11 +58,9 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
   love.window.setMode(800, 800 ) --This is how big the widow that love opens is in my case its 800x800 because my last plattform starts at 600.
 
   love.draw = function() -- Draws the whole code.
-    
-    love.graphics.print(flag.texture,
-    flag.position)
+  
 
-  end 
+
     if gameOver == true then
       love.graphics.print({fontcolor, ("Game")}, bigFont, 200, 150)
       love.graphics.print({fontcolor, ("Over")}, bigFont , 220, 250)
@@ -94,7 +91,7 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
       love.graphics.print({fontcolor, ("Arrows To Move Sideways")}, smallFont , 170, 479) 
       return
     end 
-  
+    love.graphics.draw(flag, 675, 100,0, 0.2)
     love.graphics.setColor(0.3, 0.3, 0)
     love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
     love.graphics.polygon('fill', bar.body:getWorldPoints(bar.shape:getPoints()))
@@ -114,6 +111,8 @@ love.update = function(dt) -- This is the function for time and controls.
   seconds = seconds + dt -- This makes seconds which we gave the base number 0 to increase with dt (The time the world has been up).
 
   local charachterY = charachter.body:getY()
+  local flagpositionx = 675
+  local flagpositiony = 100
 
   if(charachterY > love.graphics.getHeight()) then 
     gameOver = true 
@@ -128,11 +127,13 @@ elseif love.keyboard.isDown("a") then -- press a to move to the left.
   charachter.body:applyForce(-500,0)
 end
 print(charachter.body:getY())
-if love.keyboard.isDown("space") and (charachter.body:getY() > 730 and charachter.body:getY() < 750) then 
+if love.keyboard.isDown("space") and (charachter.body:getY() > 100 and charachter.body:getY() < 750) then 
   charachter.body:applyForce(0,-5500)
 end
-
+if(charachterY == flagpositionx) then gameOver = true
+  return 
 end 
+end
 
 
 HomeScreen = require("HomeScreen")
