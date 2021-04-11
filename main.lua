@@ -1,5 +1,11 @@
 love.physics.setMeter(64) 
 
+local x = 50 
+local y = 400
+local font 
+
+local gravity = 1100
+
 local world = love.physics.newWorld(0, 9.82*64, true) -- This give the world gravity 
 -- We need to set setMeter to 64 so we can make the world accept 64 bits as a meter which we then put in the Local world code
 
@@ -7,10 +13,12 @@ local seconds = 0 -- Here we put seconds to 0 so we use 0 as the start time
 
 local charachter = {} --This is the charachter.
 
-charachter.body = love.physics.newBody(world, 50, 400, 'dynamic')
+charachter.body = love.physics.newBody(world, x, y, 'dynamic')
 charachter.body.setMass(charachter.body, 25)
 charachter.shape = love.physics.newRectangleShape(0, 0, 50, 50)
 charachter.fixture = love.physics.newFixture(charachter.body, charachter.shape)
+
+charachter.onGround = false 
 
 local bar = {} -- These are the plattforms they are almost identical except for shape and size.
 -- förutom platsen dem är på. 
@@ -32,7 +40,7 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
   love.window.setMode(800, 800 ) --This is how big the widow that love opens is in my case its 800x800 because my last plattform starts at 600.
 
 love.draw = function() -- Draws the whole code.
-
+  love.graphics.setFont(font)
   love.graphics.setColor(0.3, 0.3, 0)
   love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
   love.graphics.polygon('fill', bar.body:getWorldPoints(bar.shape:getPoints()))
@@ -52,11 +60,23 @@ love.update = function(dt) -- This is the function for time and controls.
 if love.keyboard.isDown("d") then -- Press d to move to the right.
   charachter.body:applyForce(500,0) -- 500 is the number at which force the charachter moves.
 elseif love.keyboard.isDown("a") then -- press a to move to the left.
-  charachter.body:applyForce(-500,0)
-elseif love.keyboard.isDown("space") then -- My try to make the charachter jump (work in progress)
-  charachter.body:applyForce(0, 300)
+  charachter.body:applyForce(-500,-100)
 end
 end
+if love.keyboard.isDown("w") then 
+  charachter.body:applyForce(0,1000)
+end
+
+function love.load()
+  font = love.graphics.newFont("OpenSans-Bold.ttf",10)
+  
+end 
+
+
+
+
+
+
 
 
 
