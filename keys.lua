@@ -5,7 +5,7 @@ function love.keypressed(k)
       love.event.quit("restart")
     elseif k == 'p' then
       pauseGame = not pauseGame 
-    elseif k == 'enter' then
+    elseif k == 'return' then
    Menu = not Menu 
     elseif k == 't' then
       tutorial = not tutorial
