@@ -5,6 +5,8 @@ local y = 400
 local font 
 
 
+
+
 local world = love.physics.newWorld(0, 9.82*64, true) -- This give the world gravity 
 -- We need to set setMeter to 64 so we can make the world accept 64 bits as a meter which we then put in the Local world code
 
@@ -38,7 +40,6 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
   love.window.setMode(800, 800 ) --This is how big the widow that love opens is in my case its 800x800 because my last plattform starts at 600.
 
 love.draw = function() -- Draws the whole code.
-  love.graphics.setFont(font)
   love.graphics.setColor(0.3, 0.3, 0)
   love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
   love.graphics.polygon('fill', bar.body:getWorldPoints(bar.shape:getPoints()))
@@ -58,21 +59,16 @@ love.update = function(dt) -- This is the function for time and controls.
 if love.keyboard.isDown("d") then -- Press d to move to the right.
   charachter.body:applyForce(500,0) -- 500 is the number at which force the charachter moves.
 elseif love.keyboard.isDown("a") then -- press a to move to the left.
-  charachter.body:applyForce(-500,-100)
+  charachter.body:applyForce(-500,0)
 end
-
 print(charachter.body:getY())
-if love.keyboard.isDown("w") and (charachter.body:getY() > 420 and charachter.body:getY() < 440) then 
+if love.keyboard.isDown("space") and (charachter.body:getY() > 420 and charachter.body:getY() < 440) then 
   charachter.body:applyForce(0,-8000)
 end
-end
-
-function love.load()
-  font = love.graphics.newFont("OpenSans-Bold.ttf",10)
-  
-end 
 
 
+HomeScreen = require("HomeScreen")
+keys = require("keys")
 
 
 
