@@ -1,7 +1,7 @@
 love.physics.setMeter(64)
 
 x = 50
-y = 750
+y = 700
 
 world = love.physics.newWorld(0, 9.82 * 64, true) -- This give the world gravity 
 -- We need to set setMeter to 64 so we can make the world accept 64 bits as a meter which we then put in the Local world code
@@ -16,12 +16,12 @@ charachter.shape = love.physics.newRectangleShape(0, 0, 50, 50)
 charachter.fixture = love.physics.newFixture(charachter.body, charachter.shape)
 
 bar = {} -- These are the plattforms they are almost identical except for shape and size.
-bar.body = love.physics.newBody(world, -50, 775, 'static') -- The plattform.
+bar.body = love.physics.newBody(world, -50, 700, 'static') -- The plattform.
 bar.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0) -- The plattforms measurements.
 bar.fixture = love.physics.newFixture(bar.body, bar.shape)
 
 barsecond = {}
-barsecond.body = love.physics.newBody(world, 700, 775, 'static') -- 600 is where the plattform is placed horizontaly.
+barsecond.body = love.physics.newBody(world, 700, 700, 'static') -- 600 is where the plattform is placed horizontaly.
 barsecond.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
 barsecond.fixture = love.physics.newFixture(barsecond.body, barsecond.shape)
 
@@ -66,8 +66,8 @@ love.update = function(dt) -- This is the function for time and controls.
     end
     print(charachter.body:getX())
     if love.keyboard.isDown("space") and
-        (charachter.body:getY() > 730 and charachter.body:getY() < 750) then
-        charachter.body:applyForce(0, -4500)
+        (charachter.body:getY() > 670 and charachter.body:getY() < 710) then
+        charachter.body:applyForce(0, -13000)
     elseif love.keyboard.isDown("space") and
         (charachter.body:getY() > 520 and charachter.body:getY() < 530) and
         (charachter.body:getX() > 310 and charachter.body:getX() < 475) then
