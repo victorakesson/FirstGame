@@ -66,6 +66,8 @@ if love.keyboard.isDown("space") and (charachter.body:getY() > 420 and charachte
   charachter.body:applyForce(0,-8000)
 end
 
+end 
+
 
 HomeScreen = require("HomeScreen")
 keys = require("keys")

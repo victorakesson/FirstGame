@@ -6,7 +6,7 @@ function love.keypressed(k)
     elseif k == 'p' then
       pauseGame = not pauseGame 
     elseif k == 'enter' then
-      mainMenu = not mainMenu
+   Menu = not Menu 
     elseif k == 't' then
       tutorial = not tutorial
     end
