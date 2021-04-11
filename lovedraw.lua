@@ -1,34 +1,34 @@
 love.draw = function() -- Draws the whole code.
 
     if victory == true then
-        love.graphics.print({fontcolor, ("VICTORY!!!")}, bigFont, 200, 150)
-        love.graphics.print({fontcolor, ("R To Restart")}, smallFont, 256, 400)
+        love.graphics.print({fontcolor, ("VICTORY!!!")}, LargeFont, 200, 150)
+        love.graphics.print({fontcolor, ("R To Restart")}, MediumFont, 256, 400)
         return
     elseif gameOver == true then
-        love.graphics.print({fontcolor, ("Game")}, bigFont, 200, 150)
-        love.graphics.print({fontcolor, ("Over")}, bigFont, 220, 250)
-        love.graphics.print({fontcolor, ("R To Restart")}, smallFont, 256, 400)
-        love.graphics.print({fontcolor, ("Esc To Exit")}, smallFont, 266, 450)
+        love.graphics.print({fontcolor, ("Game")}, LargeFont, 200, 150)
+        love.graphics.print({fontcolor, ("Over")}, LargeFont, 220, 250)
+        love.graphics.print({fontcolor, ("R To Restart")}, MediumFont, 256, 400)
+        love.graphics.print({fontcolor, ("Esc To Exit")}, MediumFont, 266, 450)
         return
     elseif pauseGame == true then
-        love.graphics.print({fontcolor, ("ClIMB RACE")}, bigFont, 110, 150)
-        love.graphics.print({fontcolor, ("Press P To Continue")}, smallFont, 210, 350)
+        love.graphics.print({fontcolor, ("ClIMB RACE")}, LargeFont, 110, 150)
+        love.graphics.print({fontcolor, ("Press P To Continue")}, MediumFont, 210, 350)
         return
     elseif Menu == true and tutorial == false then
-        love.graphics.print({fontcolor, ("Welcome To")}, smallFont, 250, 150)
-        love.graphics.print({fontcolor, ("CLIMB RACE")}, bigFont, 110, 200)
-        love.graphics.print({fontcolor, ("Press ENTER To Start The Game")},smallFont, 170, 400)
-        love.graphics.print({fontcolor, ("And T for a tutorial")},smallFont, 200, 450)
+        love.graphics.print({fontcolor, ("Welcome To")}, MediumFont, 250, 150)
+        love.graphics.print({fontcolor, ("CLIMB RACE")}, LargeFont, 110, 200)
+        love.graphics.print({fontcolor, ("Press ENTER To Start The Game")},MediumFont, 170, 400)
+        love.graphics.print({fontcolor, ("And T for a tutorial")},MediumFont, 200, 450)
         return
 
     end
     if tutorial == true and pauseGame == false then
-        love.graphics.print({fontcolor, ("CLIMB RACE")}, bigFont, 110, 130)
-        love.graphics.print({fontcolor, ("T To Continue")}, smallFont, 145, 300)
-        love.graphics.print({fontcolor, ("Esc To Exit")}, smallFont, 345, 300)
-        love.graphics.print({fontcolor, ("R To Restart")}, smallFont, 145, 360)
-        love.graphics.print({fontcolor, ("P To Pause")}, smallFont, 345, 360)
-        love.graphics.print({fontcolor, ("Use a and d to move sideway and space to jump ")}, smallFont,100, 479)
+        love.graphics.print({fontcolor, ("CLIMB RACE")}, LargeFont, 110, 130)
+        love.graphics.print({fontcolor, ("T To Continue")}, MediumFont, 145, 300)
+        love.graphics.print({fontcolor, ("Esc To Exit")}, MediumFont, 345, 300)
+        love.graphics.print({fontcolor, ("R To Restart")}, MediumFont, 145, 360)
+        love.graphics.print({fontcolor, ("P To Pause")}, MediumFont, 345, 360)
+        love.graphics.print({fontcolor, ("Use a and d to move sideway and space to jump ")}, MediumFont,100, 479)
         return
     end
     love.graphics.draw(flag, 675, 100, 0, 0.2)

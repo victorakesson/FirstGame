@@ -60,9 +60,9 @@ love.update = function(dt) -- This is the function for time and controls.
 
     if Menu == true then return end
     if love.keyboard.isDown("d") then -- Press d to move to the right.
-        charachter.body:applyForce(500, 0) -- 500 is the number at which force the charachter moves.
+        charachter.body:applyForce(300, 0) -- 500 is the number at which force the charachter moves.
     elseif love.keyboard.isDown("a") then -- press a to move to the left.
-        charachter.body:applyForce(-500, 0)
+        charachter.body:applyForce(-300, 0)
     end
     print(charachter.body:getX())
     if love.keyboard.isDown("space") and
