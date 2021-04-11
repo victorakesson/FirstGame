@@ -60,8 +60,11 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
   love.draw = function() -- Draws the whole code.
   
 
-
-    if gameOver == true then
+  if victory == true then 
+    love.graphics.print({fontcolor, ("VICTORY!!!")}, bigFont, 200, 150)
+    love.graphics.print({fontcolor, ("R To Restart")}, smallFont, 256, 400)
+    return 
+  elseif gameOver == true then
       love.graphics.print({fontcolor, ("Game")}, bigFont, 200, 150)
       love.graphics.print({fontcolor, ("Over")}, bigFont , 220, 250)
       love.graphics.print({fontcolor, ("R To Restart")}, smallFont, 256, 400)
@@ -77,6 +80,7 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
       love.graphics.print({fontcolor, ("CLIMB RACE")}, bigFont , 110, 200) 
       love.graphics.print({fontcolor, ("Press ENTER To Start The Game")}, smallFont , 170, 400)
       return
+      
     end
     if tutorial == true and pauseGame == false then
       love.graphics.print({fontcolor, ("CLIMB RACE")}, bigFont , 110, 130) 
@@ -90,7 +94,7 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
       love.graphics.rectangle('line', 339, 365, 30, 30)
       love.graphics.print({fontcolor, ("Arrows To Move Sideways")}, smallFont , 170, 479) 
       return
-    end 
+    end
     love.graphics.draw(flag, 675, 100,0, 0.2)
     love.graphics.setColor(0.3, 0.3, 0)
     love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
@@ -111,8 +115,7 @@ love.update = function(dt) -- This is the function for time and controls.
   seconds = seconds + dt -- This makes seconds which we gave the base number 0 to increase with dt (The time the world has been up).
 
   local charachterY = charachter.body:getY()
-  local flagpositionx = 675
-  local flagpositiony = 100
+  local charachterX = charachter.body:getX()
 
   if(charachterY > love.graphics.getHeight()) then 
     gameOver = true 
@@ -126,11 +129,15 @@ if love.keyboard.isDown("d") then -- Press d to move to the right.
 elseif love.keyboard.isDown("a") then -- press a to move to the left.
   charachter.body:applyForce(-500,0)
 end
-print(charachter.body:getY())
-if love.keyboard.isDown("space") and (charachter.body:getY() > 100 and charachter.body:getY() < 750) then 
+print(charachter.body:getX())
+if love.keyboard.isDown("space") and (charachter.body:getY() > 730 and charachter.body:getY() < 750) then 
   charachter.body:applyForce(0,-5500)
+elseif love.keyboard.isDown("space") and (charachter.body:getY() > 520 and charachter.body:getY() < 530) and (charachter.body:getX() > 310 and charachter.body:getX() < 475) then
+  charachter.body:applyForce(0,-25000)
+elseif love.keyboard.isDown("space") and (charachter.body:getY() > 315 and charachter.body:getY() < 330) and (charachter.body:getX() > 590 and charachter.body:getX() < 800) then
+  charachter.body:applyForce(0,-25000)
 end
-if(charachterY == flagpositionx) then gameOver = true
+if(charachter.body:getY() > 120 and charachter.body:getY() < 130 and (charachter.body:getX() > 685 and charachter.body:getX() < 700)) then victory = true
   return 
 end 
 end
