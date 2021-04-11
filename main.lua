@@ -4,7 +4,6 @@ local x = 50
 local y = 400
 local font 
 
-local gravity = 1100
 
 local world = love.physics.newWorld(0, 9.82*64, true) -- This give the world gravity 
 -- We need to set setMeter to 64 so we can make the world accept 64 bits as a meter which we then put in the Local world code
@@ -18,7 +17,6 @@ charachter.body.setMass(charachter.body, 25)
 charachter.shape = love.physics.newRectangleShape(0, 0, 50, 50)
 charachter.fixture = love.physics.newFixture(charachter.body, charachter.shape)
 
-charachter.onGround = false 
 
 local bar = {} -- These are the plattforms they are almost identical except for shape and size.
 -- förutom platsen dem är på. 
@@ -62,9 +60,11 @@ if love.keyboard.isDown("d") then -- Press d to move to the right.
 elseif love.keyboard.isDown("a") then -- press a to move to the left.
   charachter.body:applyForce(-500,-100)
 end
+
+print(charachter.body:getY())
+if love.keyboard.isDown("w") and (charachter.body:getY() > 420 and charachter.body:getY() < 440) then 
+  charachter.body:applyForce(0,-8000)
 end
-if love.keyboard.isDown("w") then 
-  charachter.body:applyForce(0,1000)
 end
 
 function love.load()
