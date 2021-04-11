@@ -1,7 +1,7 @@
 love.physics.setMeter(64) 
 
 local x = 50 
-local y = 400
+local y = 750
 local font 
 
 local world = love.physics.newWorld(0, 9.82*64, true) -- This give the world gravity 
@@ -19,25 +19,51 @@ charachter.fixture = love.physics.newFixture(charachter.body, charachter.shape)
 
 local bar = {} -- These are the plattforms they are almost identical except for shape and size.
 -- förutom platsen dem är på. 
-bar.body = love.physics.newBody(world, 0, 450, 'static') -- The plattform.
+bar.body = love.physics.newBody(world, -50, 775, 'static') -- The plattform.
 bar.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0) -- The plattforms measurements.
 bar.fixture = love.physics.newFixture(bar.body, bar.shape) 
 
 local barsecond = {}
-barsecond.body = love.physics.newBody(world, 600, 450, 'static') -- 600 is where the plattform is placed horizontaly.
+barsecond.body = love.physics.newBody(world, 700, 775, 'static') -- 600 is where the plattform is placed horizontaly.
 barsecond.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
 barsecond.fixture = love.physics.newFixture(barsecond.body, barsecond.shape)
 
-local barthird = {}
-barthird.body = love.physics.newBody(world, 300, 450, 'static')
-barthird.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
-barthird.fixture = love.physics.newFixture(barthird.body, barthird.shape)
+local barthree = {}
+barthree.body = love.physics.newBody(world, 300, 550, 'static')
+barthree.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
+barthree.fixture = love.physics.newFixture(barthree.body, barthree.shape)
+
+
+
+local barfour = {}
+barfour.body = love.physics.newBody(world, 600, 350, 'static') 
+barfour.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
+barfour.fixture = love.physics.newFixture(barfour.body, barfour.shape)
+
+local barfive = {}
+barfive.body = love.physics.newBody(world, 600, 150, 'static') 
+barfive.shape = love.physics.newPolygonShape(0, 0, 0, 20, 200, 20, 200, 0)
+barfive.fixture = love.physics.newFixture(barfive.body, barfive.shape)
+
+local flag = {}
+
+flag.texture = love.graphics.newImage("flag.png")
+flag.position = {
+  ["X"] = 650,
+  ["y"] = 150
+}
+
+
 
 love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
   love.window.setMode(800, 800 ) --This is how big the widow that love opens is in my case its 800x800 because my last plattform starts at 600.
 
   love.draw = function() -- Draws the whole code.
-  
+    
+    love.graphics.print(flag.texture,
+    flag.position)
+
+  end 
     if gameOver == true then
       love.graphics.print({fontcolor, ("Game")}, bigFont, 200, 150)
       love.graphics.print({fontcolor, ("Over")}, bigFont , 220, 250)
@@ -72,7 +98,9 @@ love.graphics.setBackgroundColor(0.2, 180, 0) -- Changes the backgroundcolor
     love.graphics.setColor(0.3, 0.3, 0)
     love.graphics.polygon('fill', barsecond.body:getWorldPoints(bar.shape:getPoints()))
     love.graphics.polygon('fill', bar.body:getWorldPoints(bar.shape:getPoints()))
-    love.graphics.polygon('fill', barthird.body:getWorldPoints(bar.shape:getPoints()))
+    love.graphics.polygon('fill', barthree.body:getWorldPoints(bar.shape:getPoints()))
+    love.graphics.polygon('fill', barfour.body:getWorldPoints(bar.shape:getPoints()))
+    love.graphics.polygon('fill', barfive.body:getWorldPoints(bar.shape:getPoints()))
     love.graphics.setColor(0.7, 0, 0,2)
     love.graphics.polygon('fill', charachter.body:getWorldPoints(charachter.shape:getPoints()))
     local clock_display = 'Time: ' .. seconds --Makes the timer show seconds.
@@ -100,8 +128,8 @@ elseif love.keyboard.isDown("a") then -- press a to move to the left.
   charachter.body:applyForce(-500,0)
 end
 print(charachter.body:getY())
-if love.keyboard.isDown("space") and (charachter.body:getY() > 420 and charachter.body:getY() < 440) then 
-  charachter.body:applyForce(0,-8000)
+if love.keyboard.isDown("space") and (charachter.body:getY() > 730 and charachter.body:getY() < 750) then 
+  charachter.body:applyForce(0,-5500)
 end
 
 end 
